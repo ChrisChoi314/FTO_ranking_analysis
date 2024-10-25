@@ -63,8 +63,8 @@ for i in range(len(time_format)):
             less += 1
         else:
             same += 1
-        dev_2dec += np.abs(round_2dec[i][j] - averages_real[i][j])
-        dev_3dec += np.abs(round_3dec[i][j] - averages_real[i][j])
+        dev_2dec += np.abs(round_2dec[i][j] - np.round(averages_real[i][j]*100)/100)
+        dev_3dec += np.abs(round_3dec[i][j] - np.round(averages_real[i][j]*100)/100)
     tot = same + greater + less
     print(f"     ao{time_format[i]} is same:          {np.round(same/tot*100)}%")
     #print(f"Percent that 2 decmial ao{time_format[i]} is greater than 3 decimal: {greater/tot*100}%")
@@ -87,13 +87,11 @@ for i in range(len(time_format)):
             less += 1
         else:
             same += 1
-        dev_2dec += np.abs(trunc_2dec[i][j] - averages_real[i][j])
-        dev_3dec += np.abs(trunc_3dec[i][j] - averages_real[i][j])
+        dev_2dec += np.abs(trunc_2dec[i][j] - np.round(averages_real[i][j]*100)/100)
+        dev_3dec += np.abs(trunc_3dec[i][j] - np.round(averages_real[i][j]*100)/100)
     tot = same + greater + less
     print(f"     ao{time_format[i]} is same:          {np.round(same/tot*100)}%")
     #print(f"Percent that 2 decmial ao{time_format[i]} is greater than 3 decimal: {greater/tot*100}%")
     print(f"     2 decimal ao5 is less: {np.round(less/tot*100)}%")
     print(f"     avg deviation of 2 decimal from real: {dev_2dec/tot}")
     print(f"     avg deviation of 3 decimal from real: {dev_3dec/tot}\n")
-
-# just for fun, some stats 
